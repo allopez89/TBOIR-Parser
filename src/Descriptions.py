@@ -1,3 +1,4 @@
+from time import sleep
 from mediawiki import MediaWiki
 from bs4 import BeautifulSoup
 import requests
@@ -8,6 +9,8 @@ tboi = MediaWiki(url="https://bindingofisaacrebirth.fandom.com/api.php", user_ag
 Actives = Titles.GetActiveItems()
 for active in Actives:
     Sections = tboi.page(active).sections
+    unusedSec = ["Trivia", "Galery", "Seeds", "In-game footage", "Bugs", "References"]
     Sections.remove("")
-    #for section in Sections:
-        
+    for Psection in Sections:
+        tboi.page(active).section(Psection)
+        sleep(1)

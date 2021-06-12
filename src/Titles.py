@@ -6,6 +6,8 @@ tboi = MediaWiki(url="https://bindingofisaacrebirth.fandom.com/api.php", user_ag
 
 def GetActiveItems():
    ActiveItems =  tboi.categorymembers("Activated collectibles", None, False)
+   for i, s in enumerate(ActiveItems):
+        ActiveItems[i] = s.replace("/es", "").replace("/ja", "").replace("/zh", "")
    return ActiveItems
 
 def GetPassiveItems():
