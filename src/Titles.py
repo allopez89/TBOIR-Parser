@@ -6,8 +6,7 @@ tboi = MediaWiki(url="https://bindingofisaacrebirth.fandom.com/api.php", user_ag
 
 def GetActiveItems():
    ActiveItems =  tboi.categorymembers("Activated collectibles", None, False)
-   for i, s in enumerate(ActiveItems):
-        ActiveItems[i] = s.replace("/es", "").replace("/ja", "").replace("/zh", "")
+   ActiveItems[:] = [x for x in ActiveItems if (not "/es" in x) and (not "/ja" in x) and (not "/zh" in x)]
    return ActiveItems
 
 def GetPassiveItems():
@@ -42,7 +41,6 @@ def GetHearts_Bombs_Pills_Cards_Runes(url):
     soup = BeautifulSoup(page.content, "html.parser")
     results = soup.find("div", class_="mw-parser-output")
     trow = results.find_all("tr", id=True)
-
     for i, tcell in enumerate(trow):
         trow[i] = tcell["id"]
     for i, s in enumerate(trow):
