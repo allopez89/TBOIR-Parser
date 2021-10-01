@@ -71,5 +71,7 @@ def GetPassiveImages2(passive):
     ("Collectible_{}_tears".format(passive2) in x)]
     return imgs  
 
-GetActiveImages("Alabaster_Box")
+#GetActiveImages("Best_Friend")
+images = tboi.page("Best_Friend").images
+print(images)
 #print(GetPassiveImages("???'s_Only_Friend"))

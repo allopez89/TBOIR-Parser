@@ -22,7 +22,7 @@ def GetQuote(obj):
     soup = BeautifulSoup(page.content, "html.parser")
     side = soup.find("aside", role="region")
     quote = side.find("div", {"data-source":"quote"})
-    return quote.text.replace("\n", "").replace("\"", "")    
+    return quote.text.replace("\n", "").replace("\"", "").replace("Pickup Quote", "")  
 
 
         

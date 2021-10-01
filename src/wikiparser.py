@@ -19,10 +19,10 @@ def SerializeActives():
             
             for j in range(0, len(sections)):
                 data[sections[j]] = tboi.page(Actives[i]).section(sections[j])
-            activelist1 = ["Bag of Crafting", "Best Friend", "Broken Shovel", "Dad's Key", "Wait What?", "Yum Heart"]
-            if Actives[i] in activelist1:
-                ActivesImg = Images.GetActiveImages2(Actives[i].replace(" ", "_"))
-            else:
+            #activelist1 = ["Bag of Crafting", "Best Friend", "Broken Shovel", "Dad's Key", "Wait What?", "Yum Heart"]
+            # if Actives[i] in activelist1:
+            #     ActivesImg = Images.GetActiveImages2(Actives[i].replace(" ", "_"))
+            # else:
                 ActivesImg = Images.GetActiveImages(Actives[i].replace(" ", "_"))
             
             active2 = Actives[i].replace("!", "%21").replace("?", "").replace("'", "%27")
@@ -30,7 +30,7 @@ def SerializeActives():
             data["Images"] = []
             data["Images"].append({
                 "Icon": next((x for x in ActivesImg if "Collectible_{}_icon".format(active2.replace(" ", "_")) in x), None), 
-                "Altar": next((x for x in ActivesImg if "Item_altar".format(active2.replace(" ", "_")) in x), None), 
+                "Altar": "https://static.wikia.nocookie.net/bindingofisaacre_gamepedia/images/7/72/Item_altar.png/revision/latest", 
                 "Appearance": next((x for x in ActivesImg if "Collectible_{}_appearance".format(active2.replace(" ", "_")) in x), None),
                 "Tears": next((x for x in ActivesImg if "Collectible_{}_tears".format(active2.replace(" ", "_")) in x), None),
                 "Recharge Time": next((x for x in ActivesImg if "Recharge_".format(active2.replace(" ", "_")) in x), None)})
@@ -66,7 +66,7 @@ def SerializePassives():
             data["Images"] = []
             data["Images"].append({
                 "Icon": next((x for x in PassivesImg if "Collectible_{}_icon".format(passive2.replace(" ", "_")) in x), None), 
-                "Altar": next((x for x in PassivesImg if "Item_altar".format(passive2.replace(" ", "_")) in x), None), 
+                "Altar": "https://static.wikia.nocookie.net/bindingofisaacre_gamepedia/images/7/72/Item_altar.png/revision/latest", 
                 "Appearance": next((x for x in PassivesImg if "Collectible_{}_appearance".format(passive2.replace(" ", "_")) in x), None),
                 "Tears": next((x for x in PassivesImg if "Collectible_{}_tears".format(passive2.replace(" ", "_")) in x), None),
                 "Recharge Time": next((x for x in PassivesImg if "Recharge_".format(passive2.replace(" ", "_")) in x), None)})
@@ -80,5 +80,4 @@ def SerializePassives():
     except:
         print("An exception occurred on {} for {}, ".format(data["Name"], sys.exc_info()[1]))
 
-#SerializeActives()
-SerializePassives()
+SerializeActives()
